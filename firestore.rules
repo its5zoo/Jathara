@@ -1,0 +1,46 @@
+rules_version = '2';
+
+/**
+ * ISF Startup Jathara 2026 - Production Cloud Firestore Security Rules
+ * Venue: GIET University, Gunupur, Odisha
+ * Authoritative security model enforcing least privilege:
+ * - Public users cannot list or read attendee records.
+ * - Registrations are validated server-side and recorded via Firebase Admin SDK.
+ * - Administrative reads and mutations require authenticated Super Admin access.
+ * - Audit logs are protected from client modification.
+ */
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Registrations Collection:
+    // Strictly zero-trust for direct browser clients.
+    // All registration creations (/api/registrations), administrative queries (/api/admin/registrations),
+    // note updates, and deletions are mediated exclusively through server-side Next.js route handlers
+    // using the Firebase Admin SDK, which enforces Super Admin allowlists, Zod validation,
+    // and HTTP-only session verification.
+    match /registrations/{registrationId} {
+      allow read, write: if false;
+    }
+
+    // Administrative Audit Logs Collection:
+    // Written and queried exclusively via server-side Firebase Admin SDK.
+    // Direct client access is strictly denied.
+    match /adminAuditLogs/{logId} {
+      allow read, write: if false;
+    }
+
+    // Event Settings and Operational Config:
+    // Public read-only if static event configuration is published to Firestore.
+    // Direct client modifications are strictly denied.
+    match /eventSettings/{settingId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    // Default Deny for any unspecified paths
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

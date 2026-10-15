@@ -1,0 +1,152 @@
+@import "tailwindcss";
+
+@layer theme {
+  :root {
+    --font-serif: var(--font-serif), "Libre Baskerville", "Baskerville", "Playfair Display", Georgia, serif;
+    --font-sans: var(--font-sans), Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-heading: var(--font-serif), "Libre Baskerville", "Baskerville", "Playfair Display", Georgia, serif;
+    --font-body: var(--font-sans), Inter, system-ui, sans-serif;
+
+    --color-forest-950: #081a14;
+    --color-forest-900: #0d281e;
+    --color-forest-850: #103327;
+    --color-forest-800: #143e30;
+    --color-forest-700: #1b5341;
+    --color-forest-600: #256f57;
+    --color-forest-500: #318a6e;
+    --color-forest-100: #e2eee8;
+    --color-forest-50: #f2f7f4;
+
+    --color-ivory-50: #fcfbf8;
+    --color-ivory-100: #f7f4ec;
+    --color-ivory-200: #ede7db;
+    --color-ivory-300: #dfd6c4;
+    --color-ivory-400: #ccc1ab;
+
+    --color-terracotta-500: #c25e38;
+    --color-terracotta-600: #a74e2d;
+    --color-terracotta-700: #8b3e23;
+    --color-terracotta-100: #faeee8;
+
+    --color-gold-400: #d6b25e;
+    --color-gold-500: #be9740;
+    --color-gold-600: #9e792c;
+    --color-gold-100: #fbf5e6;
+
+    --color-charcoal-950: #0e1412;
+    --color-charcoal-900: #161e1b;
+    --color-charcoal-800: #222b27;
+    --color-charcoal-700: #333e3a;
+    --color-charcoal-600: #4a5752;
+    --color-charcoal-400: #7e8d87;
+    --color-charcoal-200: #c8d1cd;
+  }
+}
+
+:root {
+  --background: #fcfbf8;
+  --foreground: #161e1b;
+  --card: #ffffff;
+  --card-foreground: #161e1b;
+  --popover: #ffffff;
+  --popover-foreground: #161e1b;
+  --primary: #143e30;
+  --primary-foreground: #fcfbf8;
+  --secondary: #ede7db;
+  --secondary-foreground: #161e1b;
+  --accent: #c25e38;
+  --accent-foreground: #ffffff;
+  --gold: #be9740;
+  --gold-foreground: #ffffff;
+  --border: #e6dfd1;
+  --input: #e6dfd1;
+  --ring: #143e30;
+}
+
+html {
+  max-width: 100vw;
+  overflow-x: clip;
+}
+
+body {
+  max-width: 100vw;
+  overflow-x: clip;
+  min-height: 100vh;
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Typographic hierarchy: Libre Baskerville stack for headings; Inter for body, subheadings & buttons */
+h1, h2, h3, .font-heading {
+  font-family: var(--font-serif), "Libre Baskerville", "Baskerville", "Playfair Display", Georgia, serif;
+}
+
+button, input, select, textarea, .btn, .font-body {
+  font-family: var(--font-sans), Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f7f4ec;
+}
+::-webkit-scrollbar-thumb {
+  background: #c8d1cd;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #7e8d87;
+}
+
+/* Subtle pattern for institutional authenticity */
+.bg-subtle-grid {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(20, 62, 48, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(20, 62, 48, 0.04) 1px, transparent 1px);
+}
+
+.bg-forest-texture {
+  background-color: #0d281e;
+  background-image: radial-gradient(circle at 10% 20%, rgba(37, 111, 87, 0.25) 0%, transparent 40%),
+                    radial-gradient(circle at 90% 80%, rgba(194, 94, 56, 0.15) 0%, transparent 40%);
+}
+
+.glass-nav {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background-color: rgba(252, 251, 248, 0.92);
+}
+
+.glass-nav-dark {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background-color: rgba(13, 40, 30, 0.94);
+}
+
+@keyframes hotelProgress {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.animate-hotel-progress {
+  animation: hotelProgress 3s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
