@@ -105,7 +105,7 @@ export function VenueTravelClient() {
 
           {/* Official Campus Building Photograph Feature */}
           <div className="mb-10 sm:mb-12 rounded-2xl sm:rounded-3xl overflow-hidden border border-[#dfd6c4] shadow-xl bg-[#081a14] group">
-            <div className="relative min-h-[420px] xs:min-h-[380px] sm:min-h-0 sm:aspect-[16/9] md:aspect-[21/9] w-full">
+            <div className="relative min-h-[340px] sm:min-h-0 sm:aspect-[16/9] md:aspect-[21/9] w-full flex flex-col justify-end">
               <Image
                 src="/images/giet-school-of-engineering.jpg"
                 alt="School of Engineering and Technology, GIET University Campus, Gunupur, Odisha"
@@ -113,10 +113,10 @@ export function VenueTravelClient() {
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 1200px"
                 className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#081a14] via-[#081a14]/40 to-transparent sm:via-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#081a14] via-[#081a14]/50 to-transparent pointer-events-none" />
               
-              <div className="absolute bottom-3 left-3 right-3 sm:bottom-6 sm:left-6 sm:right-6 p-3.5 sm:p-5 rounded-xl sm:rounded-2xl bg-[#081a14]/90 backdrop-blur-md border border-[#256f57]/50 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
-                <div className="flex items-start sm:items-center gap-3">
+              <div className="relative z-10 m-3 sm:m-6 p-3.5 sm:p-5 rounded-xl sm:rounded-2xl bg-[#081a14]/90 backdrop-blur-md border border-[#256f57]/50 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
+                <div className="flex items-start sm:items-center gap-3 min-w-0">
                   <div className="w-10 h-10 sm:w-14 sm:h-12 rounded-xl bg-white p-1 sm:p-1.5 flex items-center justify-center shrink-0 border border-white/60 shadow-2xs">
                     <Image
                       src="/logos/giet-logo.png"
@@ -126,8 +126,8 @@ export function VenueTravelClient() {
                       className="max-h-7 sm:max-h-9 max-w-9 sm:max-w-11 w-auto h-auto object-contain"
                     />
                   </div>
-                  <div className="min-w-0">
-                    <div className="flex flex-wrap items-center gap-1 sm:gap-2 mb-0.5">
+                  <div className="min-w-0 flex-1">
+                    <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 mb-0.5">
                       <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-[#d6b25e] bg-[#143e30] px-1.5 sm:px-2 py-0.5 rounded">
                         Central Summit Venue
                       </span>
@@ -135,10 +135,10 @@ export function VenueTravelClient() {
                         State Private University
                       </span>
                     </div>
-                    <h4 className="font-serif font-bold text-sm sm:text-lg md:text-xl text-[#fcfbf8] leading-snug truncate sm:whitespace-normal">
+                    <h4 className="font-serif font-bold text-sm sm:text-lg md:text-xl text-[#fcfbf8] leading-snug whitespace-normal break-words">
                       School of Engineering and Technology Building
                     </h4>
-                    <p className="text-[11px] sm:text-xs text-[#c8d1cd] mt-0.5 line-clamp-2">
+                    <p className="text-[11px] sm:text-xs text-[#c8d1cd] mt-0.5 leading-relaxed">
                       Main Auditorium, Exhibition Arena &amp; Sector Roundtable Rooms, Gunupur, Rayagada, Odisha
                     </p>
                   </div>

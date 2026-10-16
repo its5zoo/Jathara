@@ -87,7 +87,7 @@ export function GunupurHotelsSection() {
             ROW 1: 4 HOTEL SELECTOR TABS (ACROSS THE TOP)
             Fully responsive: 1-col on small phones, 2-col on tablets/larger phones, 4-col on laptops & desktops
         ════════════════════════════════════════════════════════════════ */}
-        <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 lg:gap-3.5 relative z-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3 lg:gap-3.5 relative z-20">
           {GUNUPUR_HOTELS.map((h) => {
             const active = h.id === selectedHotelId;
 
@@ -96,7 +96,7 @@ export function GunupurHotelsSection() {
                 key={h.id}
                 type="button"
                 onClick={() => handleHotelSelect(h.id)}
-                className={`relative text-left p-2.5 sm:p-3.5 rounded-2xl border transition-all duration-300 ease-out flex items-center gap-2.5 sm:gap-3 cursor-pointer group select-none ${
+                className={`relative text-left p-3 sm:p-3.5 rounded-2xl border transition-all duration-300 ease-out flex items-center gap-3 cursor-pointer group select-none ${
                   active
                     ? "bg-white border-[#143e30] ring-2 ring-[#143e30]/15 shadow-[0_8px_24px_-4px_rgba(20,62,48,0.14)] -translate-y-0.5"
                     : "bg-[#f8f5f0] hover:bg-white border-[#e6dfd1] hover:border-[#143e30]/35 hover:shadow-xs hover:-translate-y-0.5"
@@ -109,7 +109,7 @@ export function GunupurHotelsSection() {
 
                 {/* Circle photo */}
                 <div
-                  className={`relative w-10 h-10 xs:w-11 xs:h-11 sm:w-12 sm:h-12 rounded-full overflow-hidden shrink-0 border-2 transition-all duration-300 ${
+                  className={`relative w-11 h-11 sm:w-12 sm:h-12 rounded-full overflow-hidden shrink-0 border-2 transition-all duration-300 ${
                     active
                       ? "border-[#143e30] ring-2 ring-[#143e30]/20 shadow-xs scale-105"
                       : "border-[#d8cebe] group-hover:border-[#143e30]/40 group-hover:scale-102"
@@ -127,7 +127,7 @@ export function GunupurHotelsSection() {
 
                 {/* Clean Professional Typography */}
                 <div className="flex-1 min-w-0">
-                  <div className="flex items-center justify-between gap-1">
+                  <div className="flex items-center justify-between gap-1.5">
                     <p
                       className={`font-serif font-black text-xs sm:text-[13px] lg:text-[13.5px] tracking-tight truncate leading-tight transition-colors duration-200 ${
                         active ? "text-[#143e30]" : "text-[#1c2e26] group-hover:text-[#143e30]"
@@ -136,7 +136,7 @@ export function GunupurHotelsSection() {
                     >
                       {h.name}
                     </p>
-                    <div className="flex items-center gap-0.5 text-[#b48a30] font-bold text-[10.5px] sm:text-xs shrink-0 bg-[#fbf5e6] px-1 sm:px-1.5 py-0.5 rounded border border-[#d6b25e]/30">
+                    <div className="flex items-center gap-0.5 text-[#b48a30] font-bold text-[10.5px] sm:text-xs shrink-0 bg-[#fbf5e6] px-1.5 py-0.5 rounded border border-[#d6b25e]/30">
                       <Star className="w-2.5 h-2.5 fill-current" />
                       <span>{h.rating.toFixed(1)}</span>
                     </div>
@@ -196,8 +196,8 @@ export function GunupurHotelsSection() {
                         LEFT: Photo Gallery (with arrows & strip)
                     ────────────────────────────────────────── */}
                     <div className="lg:w-[50%] shrink-0 flex flex-col bg-[#0a140f] border-b lg:border-b-0 lg:border-r border-[#1e3328]/60">
-                      {/* Main photo stage */}
-                      <div className="relative flex-1 min-h-[250px] xs:min-h-[290px] sm:min-h-[350px] lg:min-h-[440px] xl:min-h-[460px] group overflow-hidden bg-[#070f0b] flex items-center justify-center">
+                      {/* Main photo stage — full explicit height on all devices */}
+                      <div className="relative w-full h-[280px] xs:h-[320px] sm:h-[380px] lg:h-[480px] group overflow-hidden bg-[#070f0b]">
                         
                         {/* Ambient color-matched background on the sides (blur fill with crossfade) */}
                         <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
@@ -220,17 +220,17 @@ export function GunupurHotelsSection() {
                           <div className="absolute inset-0 bg-[#070f0b]/55 backdrop-blur-xs" />
                         </div>
 
-                        {/* Main Zoomed-Out Full Photos (object-contain with pure opacity crossfade) */}
-                        <div className="relative w-full h-full p-2 xs:p-3 sm:p-4 flex items-center justify-center z-1">
-                          {hotel.photos.map((p, idx) => (
-                            <div
-                              key={p.url}
-                              className={`absolute inset-0 p-2 xs:p-2.5 sm:p-3 flex items-center justify-center transition-all duration-500 ease-out ${
-                                idx === photoIdx
-                                  ? "opacity-100 scale-100 z-10 pointer-events-auto"
-                                  : "opacity-0 scale-[0.985] z-0 pointer-events-none"
-                              }`}
-                            >
+                        {/* Main Full-Size Photos — occupies 100% of stage */}
+                        {hotel.photos.map((p, idx) => (
+                          <div
+                            key={p.url}
+                            className={`absolute inset-0 p-2 sm:p-3.5 flex items-center justify-center transition-all duration-500 ease-out z-1 ${
+                              idx === photoIdx
+                                ? "opacity-100 scale-100 pointer-events-auto"
+                                : "opacity-0 scale-[0.985] pointer-events-none"
+                            }`}
+                          >
+                            <div className="relative w-full h-full">
                               <Image
                                 src={encodeURI(p.url)}
                                 alt={`${hotel.name} – ${p.label}`}
@@ -241,44 +241,44 @@ export function GunupurHotelsSection() {
                                 className="object-contain select-none drop-shadow-[0_12px_30px_rgba(0,0,0,0.6)]"
                               />
                             </div>
-                          ))}
-                        </div>
+                          </div>
+                        ))}
 
                         {/* Top & bottom subtle vignette for controls & caption legibility */}
                         <div className="absolute inset-0 bg-gradient-to-t from-[#070f0b]/90 via-transparent to-black/30 pointer-events-none z-2" />
 
-                        {/* Arrow navigation */}
+                        {/* Arrow navigation — visible on mobile touch, hover on desktop */}
                         {total > 1 && (
                           <>
                             <button
                               type="button"
                               onClick={(e) => prevPhoto(hotel.id, total, e)}
                               aria-label="Previous photo"
-                              className="absolute left-2.5 sm:left-3 top-1/2 -translate-y-1/2 z-20 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-black/40 hover:bg-black/70 backdrop-blur-md border border-white/20 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200 cursor-pointer shadow-lg active:scale-95"
+                              className="absolute left-2.5 sm:left-3 top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-black/60 hover:bg-black/85 backdrop-blur-md border border-white/25 text-white flex items-center justify-center opacity-90 sm:opacity-0 sm:group-hover:opacity-100 transition-all duration-200 cursor-pointer shadow-lg active:scale-95"
                             >
-                              <ChevronLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                              <ChevronLeft className="w-4 h-4 sm:w-4.5 sm:h-4.5" />
                             </button>
                             <button
                               type="button"
                               onClick={(e) => nextPhoto(hotel.id, total, e)}
                               aria-label="Next photo"
-                              className="absolute right-2.5 sm:right-3 top-1/2 -translate-y-1/2 z-20 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-black/40 hover:bg-black/70 backdrop-blur-md border border-white/20 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200 cursor-pointer shadow-lg active:scale-95"
+                              className="absolute right-2.5 sm:right-3 top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-black/60 hover:bg-black/85 backdrop-blur-md border border-white/25 text-white flex items-center justify-center opacity-90 sm:opacity-0 sm:group-hover:opacity-100 transition-all duration-200 cursor-pointer shadow-lg active:scale-95"
                             >
-                              <ChevronRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                              <ChevronRight className="w-4 h-4 sm:w-4.5 sm:h-4.5" />
                             </button>
                           </>
                         )}
 
                         {/* Photo counter badge */}
                         <div className="absolute bottom-2.5 right-2.5 sm:bottom-3 sm:right-3 z-10 pointer-events-none">
-                          <span className="text-[10px] sm:text-[10.5px] font-mono text-white/90 bg-black/60 backdrop-blur-md px-2 py-0.5 sm:px-2.5 rounded-full shrink-0 border border-white/10 shadow-sm">
+                          <span className="text-[10px] sm:text-[11px] font-mono text-white/95 bg-black/70 backdrop-blur-md px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full shrink-0 border border-white/20 shadow-sm">
                             {photoIdx + 1} / {total}
                           </span>
                         </div>
                       </div>
 
                       {/* Photo Filmstrip with Clear Lining & Lighting */}
-                      <div className="flex items-center gap-2 sm:gap-2.5 px-3 py-2 sm:px-3.5 sm:py-2.5 bg-[#0c1711] border-t border-white/20 overflow-x-auto scrollbar-thin">
+                      <div className="flex items-center gap-2 sm:gap-2.5 px-3 py-2.5 sm:px-3.5 sm:py-3 bg-[#0c1711] border-t border-white/20 overflow-x-auto scrollbar-thin">
                         {hotel.photos.map((p, i) => (
                           <button
                             key={i}
@@ -288,7 +288,7 @@ export function GunupurHotelsSection() {
                               setPhotoIndices((prev) => ({ ...prev, [hotel.id]: i }));
                             }}
                             aria-label={p.label}
-                            className={`relative w-13 h-9 xs:w-15 xs:h-10 sm:w-16 sm:h-11 rounded-lg overflow-hidden shrink-0 border-2 transition-all duration-200 cursor-pointer ${
+                            className={`relative w-14 h-10 sm:w-16 sm:h-11 rounded-lg overflow-hidden shrink-0 border-2 transition-all duration-200 cursor-pointer ${
                               i === photoIdx
                                 ? "border-[#d6b25e] ring-2 ring-[#d6b25e]/60 brightness-100 scale-105 shadow-[0_0_12px_rgba(214,178,94,0.4)] z-10"
                                 : "border-white/30 brightness-90 hover:brightness-100 hover:border-white/70 hover:scale-102"
@@ -315,7 +315,7 @@ export function GunupurHotelsSection() {
 
                         {/* Rating & Verified header */}
                         <div className="flex items-center justify-between gap-2">
-                          <span className="px-2.5 py-0.5 sm:py-1 rounded-full bg-[#143e30]/8 border border-[#143e30]/15 text-[#143e30] text-[10px] sm:text-[10.5px] font-bold uppercase tracking-wider">
+                          <span className="px-2.5 py-0.5 sm:py-1 rounded-full bg-[#143e30]/8 border border-[#143e30]/15 text-[#143e30] text-[10px] sm:text-[11px] font-bold uppercase tracking-wider">
                             GIET Verified Partner
                           </span>
                           <div className="flex items-center gap-1.5 px-2.5 py-0.5 sm:py-1 rounded-full bg-[#fbf5e6] border border-[#d6b25e]/35 text-[#9e792c] text-xs font-bold">
@@ -327,23 +327,23 @@ export function GunupurHotelsSection() {
 
                         {/* Hotel Name & Address */}
                         <div>
-                          <h4 className="font-serif font-black text-lg xs:text-xl sm:text-2xl text-[#0f2e22] tracking-tight leading-snug">
+                          <h4 className="font-serif font-black text-xl sm:text-2xl text-[#0f2e22] tracking-tight leading-snug">
                             {hotel.name}
                           </h4>
-                          <div className="flex items-start gap-1.5 mt-1 sm:mt-1.5 text-xs text-[#5e6e68] leading-relaxed">
-                            <MapPin className="w-3.5 h-3.5 text-[#c25e38] shrink-0 mt-[1px]" />
-                            <span className="line-clamp-2">{hotel.address}</span>
+                          <div className="flex items-start gap-1.5 mt-1 sm:mt-1.5 text-xs sm:text-[13px] text-[#5e6e68] leading-relaxed">
+                            <MapPin className="w-3.5 h-3.5 text-[#c25e38] shrink-0 mt-[2px]" />
+                            <span className="break-words">{hotel.address}</span>
                           </div>
                         </div>
 
                         {/* Triple Stat Bar */}
                         <div className="grid grid-cols-3 divide-x divide-[#e8e1d3] rounded-xl border border-[#e8e1d3] bg-[#faf7f2] py-2 sm:py-2.5 text-center shadow-xs">
                           {hotel.stats.map((s, i) => (
-                            <div key={i} className="px-1 xs:px-2">
-                              <span className="block text-[8px] xs:text-[9px] uppercase tracking-wider text-[#8c9c96] font-bold mb-0.5 truncate">
+                            <div key={i} className="px-1.5 sm:px-2">
+                              <span className="block text-[8.5px] sm:text-[9.5px] uppercase tracking-wider text-[#8c9c96] font-bold mb-0.5">
                                 {s.label}
                               </span>
-                              <span className="block text-[11px] xs:text-[12.5px] sm:text-[13px] font-black text-[#0f2e22] leading-tight">
+                              <span className="block text-xs sm:text-sm font-black text-[#0f2e22] leading-tight break-words">
                                 {s.value}
                               </span>
                             </div>
@@ -351,7 +351,7 @@ export function GunupurHotelsSection() {
                         </div>
 
                         {/* Amenity & Room Option Tags */}
-                        <div className="flex flex-wrap gap-1 sm:gap-1.5">
+                        <div className="flex flex-wrap gap-1.5">
                           {hotel.tags.map((tag, i) => {
                             const isAc = tag.includes("AC Rooms Only") || tag.includes("AC Rooms Available");
                             const isNonAc = tag.includes("Non-AC");
@@ -359,7 +359,7 @@ export function GunupurHotelsSection() {
                             return (
                               <span
                                 key={i}
-                                className={`px-2 py-0.5 sm:px-2.5 sm:py-0.5 rounded-full text-[9.5px] sm:text-[10.5px] font-semibold transition-all duration-200 ${
+                                className={`px-2.5 py-1 rounded-full text-[10px] sm:text-[11px] font-semibold transition-all duration-200 ${
                                   isAc
                                     ? "bg-[#143e30]/10 text-[#143e30] border border-[#143e30]/25 font-bold"
                                     : isNonAc
@@ -374,19 +374,19 @@ export function GunupurHotelsSection() {
                         </div>
 
                         {/* Shuttle strip */}
-                        <div className="flex items-center gap-2 sm:gap-2.5 px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-xl bg-[#edf5f1] border border-[#256f57]/20 text-[11px] sm:text-xs text-[#143e30] font-semibold">
+                        <div className="flex items-center gap-2 sm:gap-2.5 px-3 py-2 rounded-xl bg-[#edf5f1] border border-[#256f57]/20 text-xs sm:text-[12.5px] text-[#143e30] font-semibold leading-normal">
                           <Car className="w-4 h-4 text-[#256f57] shrink-0" />
-                          <span className="truncate xs:whitespace-normal">GIET Summit Shuttle &nbsp;·&nbsp; {hotel.driveTime} from summit arena</span>
+                          <span>GIET Summit Shuttle &nbsp;·&nbsp; {hotel.driveTime} from summit arena</span>
                         </div>
                       </div>
 
                       {/* Call to Book CTA block */}
-                      <div className="mt-4 sm:mt-5 pt-3.5 sm:pt-4 border-t border-[#e8e1d3] space-y-2">
+                      <div className="mt-4 sm:mt-5 pt-3.5 sm:pt-4 border-t border-[#e8e1d3] space-y-2.5">
                         <a
                           href={`tel:${hotel.primaryPhone.replace(/[^0-9+]/g, "")}`}
-                          className="w-full py-2.5 sm:py-3.5 px-4 sm:px-5 rounded-full bg-gradient-to-r from-[#143e30] via-[#103327] to-[#0a2018] hover:from-[#1b5341] hover:to-[#143e30] text-[#faf8f2] text-xs sm:text-sm font-bold tracking-wide transition-all duration-300 shadow-[0_4px_14px_rgba(20,62,48,0.25)] hover:shadow-[0_8px_22px_rgba(20,62,48,0.35)] hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2 sm:gap-2.5 group/cta cursor-pointer"
+                          className="w-full py-3 sm:py-3.5 px-4 sm:px-5 rounded-full bg-gradient-to-r from-[#143e30] via-[#103327] to-[#0a2018] hover:from-[#1b5341] hover:to-[#143e30] text-[#faf8f2] text-xs sm:text-sm font-bold tracking-wide transition-all duration-300 shadow-[0_4px_14px_rgba(20,62,48,0.25)] hover:shadow-[0_8px_22px_rgba(20,62,48,0.35)] hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2 sm:gap-2.5 group/cta cursor-pointer text-center"
                         >
-                          <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#d6b25e] transition-transform duration-300 group-hover/cta:rotate-12" />
+                          <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#d6b25e] transition-transform duration-300 group-hover/cta:rotate-12 shrink-0" />
                           <span>Call to Book: {hotel.primaryPhone}</span>
                         </a>
                         <div className="flex flex-wrap items-center justify-between gap-1 text-[10.5px] sm:text-[11px] text-[#7e8d87] px-1">
@@ -397,7 +397,7 @@ export function GunupurHotelsSection() {
                           {hotel.allPhones.length > 1 && (
                             <a
                               href={`tel:${hotel.allPhones[1].replace(/[^0-9+]/g, "")}`}
-                              className="font-mono hover:text-[#143e30] hover:underline transition-colors"
+                              className="font-mono hover:text-[#143e30] hover:underline transition-colors font-medium"
                             >
                               Alt: {hotel.allPhones[1]}
                             </a>

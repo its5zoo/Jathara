@@ -7,6 +7,8 @@
     --font-heading: var(--font-serif), "Libre Baskerville", "Baskerville", "Playfair Display", Georgia, serif;
     --font-body: var(--font-sans), Inter, system-ui, sans-serif;
 
+    --breakpoint-xs: 480px;
+
     --color-forest-950: #081a14;
     --color-forest-900: #0d281e;
     --color-forest-850: #103327;
